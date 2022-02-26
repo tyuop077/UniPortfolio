@@ -1,4 +1,8 @@
+using UniPortfolio.Misc.Services.EmailService;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<IEmailService, EmailService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
