@@ -22,7 +22,7 @@ namespace UniPortfolio.Misc.Services.EmailService
             {
                 await client.ConnectAsync("smtp.yandex.ru", 465, true);
                 Console.WriteLine("did");
-                await client.AuthenticateAsync("admin@tyuop.tk", Class1.GetPassword());
+                await client.AuthenticateAsync("admin@tyuop.tk", Environment.GetEnvironmentVariable("EmailPassword"));
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

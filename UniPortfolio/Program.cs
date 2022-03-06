@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using UniPortfolio.Misc.Services.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,11 @@ builder.Services.AddSingleton<IEmailService, EmailService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("db"));
+});
 
 var app = builder.Build();
 
